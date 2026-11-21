@@ -1,0 +1,36 @@
+html.invitation-pending,html.invitation-pending body{overflow:hidden!important}
+html.invitation-pending body>nav,html.invitation-pending body>main,html.invitation-pending body>footer{visibility:hidden}
+html.invitation-opening body>main{visibility:visible}
+.invitation-cover{position:fixed;inset:0;z-index:10002;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:clamp(16px,4vh,40px);padding:74px 20px 28px;color:#263d25;background:#f6efe2;background-image:radial-gradient(ellipse at 25% 25%,#fff8 0,transparent 65%),url('/assets/invitation-envelope.webp');background-size:auto,3000%;background-position:center,top left;font-family:Georgia,'Times New Roman',serif;line-height:1.3;overflow-y:auto}
+.invitation-languages{position:absolute;right:4.5vw;top:25px;display:flex;gap:28px}
+.invitation-languages a{font-size:clamp(16px,2vw,22px);text-decoration:none;letter-spacing:.08em;border-bottom:2px solid transparent;padding:0 2px 4px}
+.invitation-languages a[aria-current]{border-color:#a47f45}
+.invitation-cover .invitation-title{font:italic 400 clamp(32px,4.4vw,62px)/1.2 Georgia,'Times New Roman',serif;letter-spacing:.015em;text-align:center;margin:0 0 clamp(4px,2vh,26px);color:#263d25}
+.invitation-envelope{position:relative;width:min(850px,90vw);flex-shrink:0;perspective:1000px}
+.invitation-art{display:block;width:100%;height:auto;mix-blend-mode:multiply}
+.invitation-seal{position:absolute;left:39.5%;top:43%;width:20.5%;height:36%;border:0;border-radius:50%;background:transparent;cursor:pointer;padding:0;color:#fff;}
+.invitation-seal:focus-visible{outline:none}
+.invitation-seal:focus-visible .invitation-tooltip{text-decoration:underline;text-underline-offset:4px}
+.invitation-tooltip{position:absolute;bottom:110%;left:50%;transform:translate(-50%,6px);white-space:nowrap;background:#203d26;color:#fff9ed;border-radius:24px;padding:8px 18px;font:400 clamp(16px,1.7vw,21px)/1.2 Georgia,serif;opacity:0;transition:opacity .18s,transform .18s;box-shadow:0 3px 10px #1b271b26;pointer-events:none}
+.invitation-tooltip:after{content:'';position:absolute;top:100%;left:calc(50% - 7px);border:7px solid transparent;border-top-color:#203d26}
+.invitation-seal:hover .invitation-tooltip,.invitation-seal:focus-visible .invitation-tooltip{opacity:1;transform:translate(-50%,0)}
+.invitation-touch{display:none;margin:0;text-align:center;font-size:16px}
+.invitation-skip{margin:clamp(0px,2vh,24px) 0 0;border:0;background:transparent;color:inherit;text-decoration:underline;text-underline-offset:5px;cursor:pointer;font:400 clamp(16px,1.8vw,22px)/1.5 Georgia,serif;padding:10px}
+.invitation-skip:focus-visible,.invitation-languages a:focus-visible{outline:2px solid #a47f45;outline-offset:6px}
+.invitation-cover.is-opening .invitation-title,.invitation-cover.is-opening .invitation-languages,.invitation-cover.is-opening .invitation-skip,.invitation-cover.is-opening .invitation-touch{opacity:0;transition:opacity .3s}
+@media(hover:none){.invitation-touch{display:block}.invitation-seal .invitation-tooltip{display:none}}
+@media(max-width:600px){.invitation-cover{gap:24px;padding:85px 12px 30px}.invitation-languages{gap:20px;top:24px;right:24px}.invitation-cover .invitation-title{margin-bottom:24px}.invitation-envelope{width:96vw}.invitation-skip{margin-top:22px}}
+@media(max-height:520px) and (min-width:650px){.invitation-cover{gap:8px;padding-top:25px}.invitation-cover .invitation-title{font-size:30px;margin:0}.invitation-envelope{width:min(530px,62vw)}.invitation-skip{margin:0;font-size:16px}.invitation-languages{top:15px}}
+@media(prefers-reduced-motion:reduce){.invitation-cover *{transition:none!important}}
+
+/* The hinged flap, lining and front pocket are independent animation layers. */
+.invitation-interior{position:absolute;inset:8% 4% 9%;background:linear-gradient(180deg,#c5b599,#eee2cc 55%,#f4e7d1);box-shadow:inset 0 10px 20px #4d392d40;opacity:0;pointer-events:none}
+.invitation-flap{position:absolute;inset:0;width:100%;height:100%;clip-path:polygon(3.8% 7.8%,96.2% 7.8%,50% 77%);transform-origin:50% 8%;opacity:0;pointer-events:none;backface-visibility:visible;will-change:transform}
+.invitation-front{position:fixed;z-index:10004;background:url('/assets/invitation-paper.webp') center/100% 100% no-repeat;clip-path:polygon(3.8% 8%,50% 77%,96.2% 8%,96.2% 91%,3.8% 91%);pointer-events:none;filter:drop-shadow(0 8px 8px #38281c24)}
+.invitation-cover.is-opening .invitation-interior{opacity:1}
+.invitation-cover.is-opening .invitation-flap{opacity:0}
+.invitation-cover.is-opening .invitation-art{opacity:0;transition:opacity .25s}
+.invitation-cover.is-opening .invitation-seal{opacity:0;transform:translateY(12px) scale(.94);transition:opacity .22s,transform .3s}
+
+.invitation-hinge{position:fixed;z-index:10005;display:block;clip-path:polygon(3.8% 7.8%,96.2% 7.8%,50% 77%);transform-origin:50% 8%;pointer-events:none;backface-visibility:visible;opacity:1;will-change:transform}
+.invitation-front{background-color:#f2e6cf;opacity:1;mix-blend-mode:normal}

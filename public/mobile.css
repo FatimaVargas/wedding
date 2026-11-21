@@ -1,0 +1,20 @@
+/* Shared touch and narrow-screen refinements; keep all language layouts aligned. */
+.rsvp-grid>*{min-width:0}
+.rsvp-guest-card{min-inline-size:0}
+.rsvp-grid textarea{resize:vertical}
+.booking-contact a{overflow-wrap:anywhere}
+@media(max-width:700px){
+ nav .links{justify-content:space-between;gap:4px 12px}
+ nav .links a{display:inline-flex;align-items:center;min-height:40px;font-size:11px;letter-spacing:.06em}
+ .language-control select{font-size:16px;min-height:44px;max-width:100%}
+ .rsvp-submit{min-height:48px;width:100%}
+ .rsvp-grid input,.rsvp-grid select,.rsvp-grid textarea{font-size:16px;max-width:100%}
+ .rsvp-checkbox{min-height:44px}
+ .timeline li{grid-template-columns:85px minmax(0,1fr);gap:12px}
+ .dress-code>div{min-width:0}
+}
+@media(max-width:380px){
+ nav{padding-left:5vw;padding-right:5vw}
+ .venue{padding:24px 20px}
+ .rsvp-guest-card{padding:16px 14px}
+}
